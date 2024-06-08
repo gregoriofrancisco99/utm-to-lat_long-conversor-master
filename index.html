@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | UTM to Lat/Long</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <link rel="stylesheet" href="./style/main.css">
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+</head>
+<body>
+  <header>
+    <h1>UTM to Lat/Long</h1>
+    <form onsubmit="return start(event)">
+      <input type="text" id="utm_coordinate" placeholder="Convert any UTM coordinate to lat/long">
+      <button type="button"  value="Convert"><img src="./images/icon-arrow.svg" alt=""></button>
+    </form>
+    <div class="table">
+      <div class="column first">
+        <h3>UTM Coordinate</h3>
+        <span><strong id="utm">33M 454323 5654567</strong></span>
+      </div>
+      <div class="column second">
+        <h3>Latitude</h3>
+        <span><strong id="latitude">-7.620171</strong></span>
+      </div>
+      <div class="column third">
+        <h3>Longitude</h3>
+        <span><strong id="longitude">15.062503</strong></span>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="map_wrapper" id="map" style="width:100%; height:100vh;"></div>
+
+  </main>
+  <script>
+    //Creating map options
+    var map_option = {
+        center: [-7.620171, 15.062503],
+        zoom: 15,
+        scrollWheelZoom: false,
+    }
+
+    //Creating map object
+    var map = new L.map('map', map_option);
+
+    //Creating layer object
+    var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+    //Adding layer to the map
+    map.addLayer(layer);
+
+    //Creating a marker
+    var marker = L.marker([-7.620171, 15.062503]);
+    map.setView([-7.620171, 15.062503]);
+    //Adding marker to the o map
+    marker.addTo(map);
+
+    function updateMarkerPosition (lat, long) {
+        marker.setLatLng([lat, long]);
+        map.setView([lat, long]);
+    }
+  </script>
+  
+  <footer>
+    <p>Made with ❤️ by <a href="https://rocket-links-kappa.vercel.app/" target="_blank">Gregório Francisco</a></p>
+  </footer>
+  <script src="./script/UTMConversion.js"></script>
+</body>
+</html>
