@@ -1,7 +1,8 @@
-//Clearing placeholders
-document.getElementById("utm_coordinate").value = '';
-document.getElementById("latitude").value = '';
-document.getElementById("longitude").value = '';
+// Clear placeholders safely (only if elements exist)
+var _utmInput = document.getElementById("utm_coordinate");
+if (_utmInput) _utmInput.value = '';
+var _latLong = document.getElementById("lat_long");
+if (_latLong) _latLong.innerText = '';
 
 // Parsing UTM Coordinate
 // Function for separating values from whole UTM
@@ -11,9 +12,9 @@ function parse_utm (utm_coordinate) {
     
     if (!match) {
         alert("Invalid UTM coordinate format");
-        document.getElementById("utm_coordinate").value = '';
-        document.getElementById("latitude").value = '';
-        document.getElementById("longitude").value = '';
+        var ui = document.getElementById("utm_coordinate"); if (ui) ui.value = '';
+        var ll = document.getElementById("lat_long"); if (ll) ll.innerText = '';
+        return null;
     }
     
     const zoneHemisphere = match[1];
@@ -33,6 +34,7 @@ function start(event){
     var raw_utm_coordinate = document.getElementById("utm_coordinate").value;
     console.log(raw_utm_coordinate);
     var utm = parse_utm(raw_utm_coordinate);
+    if (!utm) return;
     var easting = utm.easting;
     var northing = utm.northing;
     var zone = utm.zoneHemisphere;
@@ -40,9 +42,7 @@ function start(event){
 
     var lat_long = UTMtoLatLong(easting, northing, parseInt(zone), hemisphere);
 
-    document.getElementById("utm").innerText = `${utm.zoneHemisphere} ${utm.easting} ${utm.northing}`;
-    document.getElementById("latitude").innerText = lat_long.latitude;
-    document.getElementById("longitude").innerText = lat_long.longitude;
+    document.getElementById("lat_long").innerText = `${lat_long.latitude}, ${lat_long.longitude}`;
 
     updateMarkerPosition(lat_long.latitude, lat_long.longitude);
 }
@@ -110,3 +110,48 @@ function UTMtoLatLong(utm_easting, utm_northing, utm_zone, hemisphere) {
 
     return { latitude: latitude.toFixed(6), longitude: longitude.toFixed(6) };
 }
+
+// Copy latitude and longitude in `lat, long` format to clipboard
+function copyLatLong() {
+    var lat_long = document.getElementById("lat_long").innerText;
+    var lon = lat_long.split(", ")[1];
+    var lat = lat_long.split(", ")[0];
+    if (!lat || !lon) {
+        alert("No coordinates to copy");
+        return;
+    }
+    var text = lat + ", " + lon;
+    var btn = document.getElementById("copyBtn");
+    var original = btn ? btn.innerHTML : null;
+
+    function indicateCopied() {
+        if (!btn) return;
+        btn.innerHTML = '✓';
+        setTimeout(function() { btn.innerHTML = original; }, 1400);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+            indicateCopied();
+        }).catch(function() {
+            fallbackCopy(text);
+        });
+    } else {
+        fallbackCopy(text);
+    }
+
+    function fallbackCopy(str) {
+        var ta = document.createElement('textarea');
+        ta.value = str;
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+            document.execCommand('copy');
+            indicateCopied();
+        } catch (e) {
+            alert('Copy failed');
+        }
+        document.body.removeChild(ta);
+    }
+}
+

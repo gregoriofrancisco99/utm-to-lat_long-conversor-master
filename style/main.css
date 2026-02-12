@@ -5,190 +5,170 @@
   margin: 0;
   box-sizing: border-box  ;
 }
+
 header {
-  background: url(./../images/pattern-bg-desktop.png) no-repeat;
-  background-size: auto;
-  background-size: 100% 100%;
-  padding: 2em 0 10em;
-  position: relative;
-  width: 100%;
-  height: 30vh;
+  background: #f6f7f8;
+  padding: 1em 2em;
+
+  display: flex; 
   align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-h1 {
-  font-size: 1.5em;
-  color: #fff;
-  font-family: Rubik, sans-serif;
-  font-weight: 500;
-  margin-bottom: 1em;
-}
-
-form {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  width: 38%;
-}
-
-input  {
-  background: #fff;
-  border: none;
-  border-radius: .75em 0 0 .75em;
-  flex: 1.8 1;
-  font-family: Rubik,sans-serif;
-  font-size: 1.5em;
-  outline: none;
-  padding: 1em;
-}
-button {
-  padding: 2em .5em;
-  background: #2b2b2b;
-  border: none;
-  border-radius: 0 1em 1em 0;
-  flex: .2 1;
-  height: 100%;
-  outline: none;
-}
-button img {
-  width: 15px;
-}
-
-.table {
-  align-items: center;
-  background: #fff;
-  border-radius: .75em;
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  position: absolute;
-  right: auto;
-  top: 13em;
-  padding-bottom: 2em;
-  width: 77%;
-  z-index: 90;
-}
-.table .column {
-  align-items: flex-start;
-  border-right: 1px solid #969696;
-  cursor: default;
+
+  z-index: 999;
   display: flex;
-  flex: 1 1;
-  flex-direction: column;
+  align-items: center;
+}
+
+#logo {
   font-family: Rubik,sans-serif;
-  height: 100%;
-  justify-content: flex-start;
-  padding: 2em 0 0 2em;
-  position: relative;
-}
-.table .column:last-child {
-  border-right: none;
-}
-.table .column h3 {
-  color: #969696;
   font-size: 1em;
-  letter-spacing: 1px;
-  margin-bottom: 1em;
-  text-transform: uppercase;
-}
-.table .column span {
-  font-size: 2em;
   font-weight: 500;
+  text-decoration: none;
+  color: #000;
 }
-body {
-  height: 100vh;
-}
+
 main {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 70vh;
-  justify-content: flex-start;
+  min-height: 100vh;
   width: 100%;
 }
-footer {
+
+.card {
+  /* Floating card for Desktop default; */
   position: absolute;
-  bottom: 0;
-  left: 0;
-  background: #aaf;
+
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.94);
+  box-shadow: 0 12px 32px rgba(15,23,42,0.08);
+  border-radius: 12px;
+  padding: 0.9rem;
+  width: 420px;
+  max-width: calc(100% - 2rem);
+  z-index: 9999;
+  font-family: Rubik, sans-serif;
+}
+.card form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.card label {
+  font-size: 1em;
+  color: #39424a;
+}
+.card input[type="text"] {
+  padding: 0.8rem 1rem;
+  border: 1px solid #e6e9ee;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: box-shadow .15s ease, border-color .15s ease;
+}
+.card input[type="text"]:focus {
+  border-color: #6fa8ff;
+  box-shadow: 0 4px 12px rgba(111,168,255,0.18);
+}
+
+.card .lat_long_coord {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.card .btn {
+  margin-top: 0.25rem;
+  padding: 0.75rem 1rem;
+  background: #1158c7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.card .btn:hover { opacity: 0.95 }
+
+.results { margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.results .row { display: flex; justify-content: space-between; align-items: center; }
+.results .label { color: #6b7280; font-size: 0.85rem; }
+.results .value { color: #0b2540; font-weight: 600; }
+
+.copy-row { display: flex; justify-content: flex-end; }
+.copy_btn { background: transparent; border: none; padding: 0.25rem; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; }
+.copy_btn img { width: 18px; height: 18px; display: block; }
+.copy_btn:active { transform: scale(0.98); }
+.panel-content { padding: 0.75rem; }
+.divider { border: none; border-top: 1px solid #eef2f6; margin: 0.5rem 0; }
+.muted { color: #6b7280; font-size: 0.85rem; }
+.coord-row .value { font-weight: 700; font-size: 1.05rem; color: #0b2540; }
+.precision-note { font-size: 0.75rem; color: #6b7280; margin-top: 0.5rem; }
+footer {
+  width: 100%;
+  position: relative;
+  background: #fff;
   padding: .5em 0 1em;
+  
   font-family: Rubik,sans-serif;
   font-size: 15px;
   text-align: center;
   font-weight: 200;
 }
-footer a {
-  text-decoration: none;
-  color: rgb(9, 19, 24);
-  font-weight: 500;
-}
 
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   header {
-    height: 22vh;
+    padding: 2em 3em;
   }
   main {
     height: 78vh;
   }
-  form input {
-    font-size: .85em;
-  }
-  form button {
-    padding: .8em;
-  }
-  .table {
-    top: 11em;
-    padding: 0 1em;
-  }
-  .table .column {
-    padding: 1em 0 1em 1em;
-  }
-  .table .column span {
-    font-size: 1em;
-  }
+  /* Minor layout adjustments for medium screens */
 }
 @media only screen and (max-width: 600px) {
+  body {
+    font-size: 12px;
+  }
   header {
-    height: 22vh;
+    padding: .5em 1em;
   }
-  main {
-    height: 78vh;
-  }
-  form input {
-    font-size: .9em;
-  }
-  form button {
-    padding: .5em;
-  }
-  .table {
-    top: 10em;
-    padding: 0 1em;
-    flex-direction: column;
-  }
-  .table .column {
-    padding: 0 0 1em;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
+  header #logo {
+    font-size: .7em;
   }
-  .table .column:first-child {
-    padding-left: 0;
-    padding-top: 1em;
+
+  header a img {
+    width: 80px;
   }
-  .table .column h3 {
-    font-size: .9em;
-    margin-bottom: .5em;
+
+  main { 
+    height: auto; 
   }
-  .table .column span {
-    font-size: .8em;
+
+  .card {
+    /* Floating card for mobile default; */
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+    transform: translateX(0%);
+    width: 100%;
+    max-width: calc(100%);
+    z-index: 9999;
+    font-family: Rubik, sans-serif;
+  }
+
+  .card input[type="text"], .card .btn 
+  { 
+    padding: 1rem; 
+    font-size: 1rem; 
   }
   footer {
     position: relative;
   }
 }
+
+/* Map sizing: ensure it fills available viewport under header */
+.map_wrapper, #map { width: 100%; height: calc(100vh); }
