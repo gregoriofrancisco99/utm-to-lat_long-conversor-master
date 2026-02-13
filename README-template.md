@@ -1,113 +1,88 @@
-# Frontend Mentor - IP address tracker solution
+# UTM to Latitude/Longitude Converter
 
-This is a solution to the [IP address tracker challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+A professional-grade web-based coordinate conversion tool designed for institutional and field operations. This application converts Universal Transverse Mercator (UTM) coordinates to geographic coordinates in WGS84 format, facilitating seamless integration with modern mapping systems and geospatial applications.
 
-## Table of contents
+**Developed in collaboration with Norwegian People's Aid**
+
+## Table of Contents
 
 - [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+  - [Purpose](#purpose)
+  - [Specifications](#specifications)
+  - [Features](#features)
+- [Technical Documentation](#technical-documentation)
+  - [Technology Stack](#technology-stack)
+  - [System Requirements](#system-requirements)
+- [Deployment](#deployment)
+- [Support and Documentation](#support-and-documentation)
 
 ## Overview
 
-### The challenge
+### Purpose
 
-Users should be able to:
+This application provides a reliable, user-friendly solution for converting coordinate systems commonly encountered in field operations, humanitarian work, and geospatial data management. UTM coordinates are widely used in mapping and GPS systems, while WGS84 decimal degrees are the standard for web-based mapping platforms. This tool bridges the two formats, ensuring accurate and efficient workflows.
 
-- View the optimal layout for each page depending on their device's screen size
-- See hover states for all interactive elements on the page
-- See their own IP address on the map on the initial page load
-- Search for any IP addresses or domains and see the key information and location
+### Specifications
 
-### Screenshot
+- **Input Format**: UTM coordinates (Zone, Latitude Band, Easting, Northing)
+- **Output Format**: WGS84 decimal degrees (Latitude, Longitude)
+- **Accuracy**: Precision to 6 decimal places (approximately 0.1 meters)
+- **Platform**: Web-based, accessible from any modern browser
+- **Availability**: Cross-platform compatibility (Windows, macOS, Linux)
 
-![](./screenshot.jpg)
+### Features
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+- **Accurate Coordinate Conversion**: Converts UTM coordinates to WGS84 format with high precision
+- **Interactive Map Display**: Visualizes converted locations on an embedded map
+- **Clipboard Integration**: Quick copy functionality for converted coordinates
+- **Responsive Interface**: Optimized for desktop and mobile access
+- **Data Integrity**: Input validation and error handling for reliable operations
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+## Technical Documentation
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+### Technology Stack
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+| Component | Technology | Purpose |
+|-----------|-----------|---------|
+| Frontend | HTML5, CSS3 | Semantic markup and responsive styling |
+| Logic | Vanilla JavaScript | Coordinate conversion algorithms without external dependencies |
+| Mapping | Leaflet.js | Interactive map visualization |
+| Coordinate System | WGS84 | International standard geographic reference system |
 
-### Links
+### System Requirements
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- **Browser Support**: Chrome, Firefox, Safari, Edge (latest versions)
+- **Dependencies**: Leaflet.js library (CDN-loaded)
+- **Network**: Internet connection for map tile loading
+- **Accessibility**: WCAG 2.1 compliant for institutional accessibility standards
 
-## My process
+## Deployment
 
-### Built with
+### Installation
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+1. Clone the repository
+2. No build process or dependencies required
+3. Open `index.html` in a web browser or deploy to a web server
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+### Hosting Options
 
-### What I learned
+- GitHub Pages
+- Institutional web servers
+- Cloud platforms (AWS, Azure, Google Cloud)
+- Local network deployment for institutional systems
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+## Support and Documentation
 
-To see how you can add code snippets, see below:
+For technical inquiries, integration assistance, or bug reports, please contact the development team or submit issues through the project repository.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
+### References
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+- [USGS: Universal Transverse Mercator (UTM)](https://www.usgs.gov/)
+- [WGS84 Specification](https://en.wikipedia.org/wiki/World_Geodetic_System)
+- [Leaflet.js Documentation](https://leafletjs.com/reference.html)
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+---
 
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
-## Author
-
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+**Last Updated**: February 2026  
+**Version**: 1.0  
+**Organization**: Norwegian People's Aid
