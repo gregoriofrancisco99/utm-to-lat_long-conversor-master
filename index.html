@@ -10,36 +10,72 @@
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <link rel="stylesheet" href="./style/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
 </head>
 <body>
   <header>
-    <h1>UTM to Lat/Long</h1>
-    <form onsubmit="return start(event)">
-      <input type="text" id="utm_coordinate" placeholder="Convert any UTM coordinate to lat/long">
-      <button type="button"  value="Convert"><img src="./images/icon-arrow.svg" alt=""></button>
-    </form>
-    <div class="table">
-      <div class="column first">
-        <h3>UTM Coordinate</h3>
-        <span><strong id="utm">33M 454323 5654567</strong></span>
-      </div>
-      <div class="column second">
-        <h3>Latitude</h3>
-        <span><strong id="latitude">-7.620171</strong></span>
-      </div>
-      <div class="column third">
-        <h3>Longitude</h3>
-        <span><strong id="longitude">15.062503</strong></span>
-      </div>
-    </div>
-  </header>
-  <main>
-    <div class="map_wrapper" id="map" style="width:100%; height:100vh; z-index: 0;"></div>
 
+    <a href="#home"><img id="logo" src="./images/npa_logo.png" alt="Norwegian People's Aid Logo"></a>
+
+    <nav id="menu hide">
+      <ul>
+        <li><a href="#home">Tool</a></li>
+        <li><a href="#about">History</a></li>
+        <li><a href="#contact">Guide</a></li>
+      </ul>
+    </nav>
+
+    <nav class="settings hide" >
+      <ul>
+        <li><a href="#settings"><i class="fa-solid fas fa-globe" aria-hidden="true"></i> <span class="sr_only">Language</span></a></li>
+        <li><a href="#settings"><i class="fa-solid fas fa-gear" aria-hidden="true"></i> <span class="sr_only">Settings</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <header>
+        <h1>UTM to Lat/Long</h1>
+      </header>
+      <section id="coord__handling">
+        <form id="coord__form">
+          <input type="text" id="utm_coordinate" placeholder="33M 454323 5654567" required>
+          <button><i class="fa-solid fa-arrow-right"></i><span class="sr_only">Convert</span></button>
+        </form>
+        
+        <table class="table" aria-label="Coordinate results">
+          <thead>
+            <tr>
+              <th scope="col">UTM Coordinate</th>
+              <th scope="col">Latitude</th>
+              <th scope="col">Longitude</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong id="utm">33M 454323 5654567</strong></td>
+              <td><strong id="latitude">-7.620171</strong></td>
+              <td><strong id="longitude">15.062503</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </article>
+
+    <div class="map_holder">
+      <div class="map_wrapper" id="map"></div>
+    </div>
+  
   </main>
-  <script>
+
+  <footer>
+    <p> &copy; 2023 <a href="https://www.npaid.org/" target="_blank" rel="noopener">Norwegian People's Aid</a>. All rights reserved.</p>
+  </footer>
+
+<script>
     //Creating map options
     var map_option = {
         center: [-7.620171, 15.062503],
@@ -68,9 +104,6 @@
     }
   </script>
   
-  <footer>
-    <p>Made with ❤️ by <a href="https://rocket-links-kappa.vercel.app/" target="_blank">Gregório Francisco</a></p>
-  </footer>
   <script src="./script/UTMConversion.js"></script>
 </body>
 </html>
